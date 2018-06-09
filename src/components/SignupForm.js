@@ -17,15 +17,19 @@ export default class SignupForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.onSubmit(this.state.username, this.state.password, this.state.email, this.props.history.push)
   }
 
   render(){
+
+    const { submitLabel } = this.props;
+
     return (
 
       <div>
         <form onSubmit = {this.handleSubmit}>
 
-          <label>Sign Up</label>
+          <h1>{submitLabel}</h1>
 
           <div>
             <input
@@ -59,6 +63,8 @@ export default class SignupForm extends Component {
               />
             <label htmlFor="email">Email</label>
           </div>
+
+          <input type="submit" />
 
         </form>
       </div>

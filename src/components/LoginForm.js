@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import '../assets/css/LoginForm.css'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../actions/playerActions'
 
-
-export default class LoginForm extends Component {
+export class LoginForm extends Component {
 
   state = {
     username: "",
@@ -17,16 +19,17 @@ export default class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.username, this.state.password, this.props.history.push)
+    this.props.login(this.state.username, this.state.password, this.props.history.push)
   }
 
   render(){
+
     const { submitLabel } = this.props;
 
     return (
 
       <div>
-        <h1> {submitLabel} </h1>
+        <h1> Login </h1>
 
         <form onSubmit = {this.handleSubmit}>
 
@@ -61,3 +64,9 @@ export default class LoginForm extends Component {
   }
 
 }
+
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired
+}
+
+export default connect(null, { login })(LoginForm);

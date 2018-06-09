@@ -1,38 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPlayerInfo } from '../actions/playerActions'
+import PropTypes from 'prop-types';
+import { setPlayerInfo } from '../actions/actionCreators'
+import thunk from 'redux-thunk';
 
-export default class PlayerInfo extends Component {
 
-  state = {
-    player: [],
-  }
+export class PlayerInfo extends Component {
 
   componentDidMount(){
-    this.getInfo();
+    fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)}).then(console.log(this.props.player));
   }
 
-  getInfo = () => {
-
-    if (localStorage.getItem('token')) {
-
-      fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem('user_id')}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem('token'),
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          this.setState({
-            player: json
-          })
-        })
-
-    } else {
-      this.props.history.push("/login");
-    }
-
-  }
 
   logOut = () => {
     localStorage.clear();
@@ -40,14 +19,33 @@ export default class PlayerInfo extends Component {
   }
 
   render() {
-    return(
-      <div>
-        <h1>Hello {this.state.player.username}!</h1>
-        <p>Bombs Defused: {this.state.player.defused}</p>
-        <p>Bombs Exploded: {this.state.player.exploded}</p>
-        <button onClick = {this.logOut} >Logout</button>
-      </div>
-    )
+    if (this.props.player) {
+      return (
+        <div>
+          <h1>Hello {this.props.player.username}!</h1>
+          <h2>Bombs Defused {this.props.player.defused}</h2>
+          <h2>Bombs Exploded {this.props.player.exploded}</h2>
+          <p> Email: {this.props.player.email} </p>
+          <button onClick = {this.logOut} >Logout</button>
+        </div>
+      )
+    } else {
+      return (
+        <h1> Loading... </h1>
+      )
+    }
   }
-
 }
+
+const mapStateToProps = (state) => {
+  return {
+    player: state.playerReducer.player
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  setPlayerInfo: (json) => dispatch(setPlayerInfo(json))
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerInfo)
