@@ -14,7 +14,7 @@ class App extends Component {
           <div>
             <Route exact path = "/" component = {Home} />
             <Route exact path = "/login" component = {LoginForm}/>
-            <Route exact path = "/signup" render = {(props) => <SignupForm submitLabel="Signup" onSubmit={this.register} {...props} /> } />
+            <Route exact path = "/signup" component = { SignupForm } />
             <Route exact path = "/player" component = {PlayerInfo} />
         </div>
         </Router>

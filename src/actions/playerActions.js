@@ -15,8 +15,6 @@ export const fetchPlayerInfo = () => {
 }
 
 export const login = (username, password, callback) => dispatch => {
-    console.log(username);
-    console.log(password);
     console.log("checking player info");
     fetch(`http://localhost:3000/api/v1/sessions/`, {
       method: 'POST',
@@ -32,7 +30,6 @@ export const login = (username, password, callback) => dispatch => {
         localStorage.setItem('user_id', json.user_id)
         localStorage.setItem('username', json.username)
 
-        console.log(json)
         callback("/player")
       } else {
         callback("/login")

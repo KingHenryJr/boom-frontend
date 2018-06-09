@@ -22,9 +22,12 @@ export class LoginForm extends Component {
     this.props.login(this.state.username, this.state.password, this.props.history.push)
   }
 
-  render(){
+  signUp = () => {
+    localStorage.clear();
+    this.props.history.push("/signup");
+  }
 
-    const { submitLabel } = this.props;
+  render(){
 
     return (
 
@@ -58,6 +61,8 @@ export class LoginForm extends Component {
           <input type="submit" />
 
         </form>
+          <br/>
+          <button onClick = {this.signUp}> Signup </button>
       </div>
 
     )

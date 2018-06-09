@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import '../assets/css/SignupForm.css'
+import { register } from '../actions/playerActions'
+import { connect } from 'react-redux';
 
-export default class SignupForm extends Component {
+
+export class SignupForm extends Component {
 
   state = {
     username: "",
@@ -17,20 +20,19 @@ export default class SignupForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.username, this.state.password, this.state.email, this.props.history.push)
+    this.props.register(this.state.username, this.state.password, this.state.email, this.props.history.push)
+  }
+
+  login = () => {
+    localStorage.clear();
+    this.props.history.push("/login");
   }
 
   render(){
-
-    const { submitLabel } = this.props;
-
     return (
-
       <div>
         <form onSubmit = {this.handleSubmit}>
-
-          <h1>{submitLabel}</h1>
-
+          <h1>Signup</h1>
           <div>
             <input
               type = "text"
@@ -67,8 +69,13 @@ export default class SignupForm extends Component {
           <input type="submit" />
 
         </form>
+         <br/>
+
+          <button onClick = {this.login}> Login </button>
       </div>
 
     )
   }
 }
+
+export default connect(null, { register })(SignupForm);
