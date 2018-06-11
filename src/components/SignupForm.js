@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../assets/css/SignupForm.css'
 import { register } from '../actions/playerActions'
 import { connect } from 'react-redux';
 

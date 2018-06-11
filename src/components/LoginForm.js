@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../assets/css/LoginForm.css'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../actions/playerActions'
