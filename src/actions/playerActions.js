@@ -1,6 +1,6 @@
 // set up fetch funtions here
-import { SET_PLAYER_INFO, UPDATE_PLAYER_INFO, CREATE_PLAYER_INFO, LOGIN_PLAYER} from './types'
 
+//----- get request for current user info
 export const fetchPlayerInfo = () => {
     console.log("fetching player info");
     if (localStorage.getItem('token')) {
@@ -14,8 +14,11 @@ export const fetchPlayerInfo = () => {
     }
 }
 
+
+//----- post request for current user info to login
+//----- adds tokens to local storage + turns people back if errors
 export const login = (username, password, callback) => dispatch => {
-    console.log("checking player info");
+    console.log("checking login info");
     fetch(`http://localhost:3000/api/v1/sessions/`, {
       method: 'POST',
       headers: {
@@ -36,16 +39,13 @@ export const login = (username, password, callback) => dispatch => {
         alert("✋ Wrong Info ✋")
       }
     })
-    .then(json => dispatch({
-      type: LOGIN_PLAYER,
-      payload: json,
-    }))
-
 }
 
-export const register = (username, password, email, callback) => dispatch => {
-  console.log(username);
 
+//----- post request for a new user
+//----- adds tokens to local storage + turns people back if errors
+export const register = (username, password, email, callback) => dispatch => {
+  console.log("checking registration info");
   fetch('http://localhost:3000/api/v1/users/', {
     method: 'POST',
     headers: {
@@ -56,22 +56,53 @@ export const register = (username, password, email, callback) => dispatch => {
     .then(res => res.json())
     .then(json => {
       if (json.token) {
-        console.log(json.token)
-      localStorage.setItem('token', json.token)
-      localStorage.setItem('user_id', json.user_id)
-      localStorage.setItem('username', json.username)
-
-      console.log(json)
-      callback("/player");
-
+        localStorage.setItem('token', json.token)
+        localStorage.setItem('user_id', json.user_id)
+        localStorage.setItem('username', json.username)
+        callback("/player");
     } else {
-      callback("/signup")
-      alert("✋ Incomplete Signup ✋")
+        callback("/signup")
+        alert("✋ Incomplete Signup ✋")
     }
   })
-  .then(json => dispatch({
-    type: CREATE_PLAYER_INFO,
-    payload: json,
-  }))
+}
+
+
+//----- patch request to add +1 to users exploded column
+export const exploded = (increaseExplodedCounter, defusedCounter) => {
+  console.log("adding +1 to exploded");
+
+  fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem('user_id')}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      "Authorization": localStorage.getItem('token'),
+    },
+      body: JSON.stringify({
+        exploded: increaseExplodedCounter,
+        defused: defusedCounter,
+      })
+  }).then(res => res.json())
+
+}
+
+
+//----- patch request to add +1 to users defused column
+export const defused = (increaseDefusedCounter, explodedCounter) => {
+  console.log("adding +1 to defused");
+
+  fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem('user_id')}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      "Authorization": localStorage.getItem('token'),
+    },
+    body: JSON.stringify({
+      exploded: explodedCounter,
+      defused: increaseDefusedCounter,
+    })
+  }).then(res => res.json())
 
 }

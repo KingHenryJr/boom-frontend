@@ -1,7 +1,6 @@
-// name of all your actions
+// action names
 
-//player info fetches
 export const SET_PLAYER_INFO = "SET_PLAYER_INFO";
-export const UPDATE_PLAYER_INFO = "UPDATE_PLAYER_INFO";
-export const CREATE_PLAYER_INFO = "CREATE_PLAYER_INFO";
-export const LOGIN_PLAYER = "LOGIN_PLAYER"
+export const BUTTONS_PRESSED = "BUTTONS_PRESSED"
+export const CLEAR_BUTTONS_PRESSED = "CLEAR_BUTTONS_PRESSED"
+export const CLEAR_WIRES_PRESSED = "CLEAR_WIRES_PRESSED"

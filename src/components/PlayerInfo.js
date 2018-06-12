@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPlayerInfo } from '../actions/playerActions'
-import PropTypes from 'prop-types';
-import { setPlayerInfo } from '../actions/actionCreators'
-import thunk from 'redux-thunk';
+import { setPlayerInfo } from '../actions/actions'
 
 
 export class PlayerInfo extends Component {
 
+//----- fetches current player info + sets store props
   componentDidMount(){
-    fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)}).then(console.log(this.props.player));
+    fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
   }
 
-
+//----- logout of current user
   logOut = () => {
     localStorage.clear();
+    console.log(this.props);
     this.props.history.push("/login");
+  }
+
+//----- starts level 1
+  startGame = () => {
+    this.props.history.push("/level1");
   }
 
   render() {
@@ -27,6 +32,8 @@ export class PlayerInfo extends Component {
           <h2>Bombs Exploded {this.props.player.exploded}</h2>
           <p> Email: {this.props.player.email} </p>
           <button onClick = {this.logOut} >Logout</button>
+          <button onClick = {this.startGame} >Play!!!</button>
+
         </div>
       )
     } else {
@@ -37,15 +44,19 @@ export class PlayerInfo extends Component {
   }
 }
 
+//----- gives us our player info as props
 const mapStateToProps = (state) => {
   return {
     player: state.playerReducer.player
   }
 }
 
+//----- gives us our set player info function
 const mapDispatchToProps = (dispatch) => ({
+
   setPlayerInfo: (json) => dispatch(setPlayerInfo(json))
 
 })
 
+//----- connects our store with our methods / props
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerInfo)
