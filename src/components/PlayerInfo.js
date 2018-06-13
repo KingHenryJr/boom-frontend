@@ -7,14 +7,17 @@ import { setPlayerInfo } from '../actions/actions'
 export class PlayerInfo extends Component {
 
 //----- fetches current player info + sets store props
+
   componentDidMount(){
-    fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
+    if (localStorage.getItem("token") === null) {
+      return ( <div> { alert("Please Login") } { this.logOut() } </div> )
+    } else {
+      fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)}); }
   }
 
 //----- logout of current user
   logOut = () => {
     localStorage.clear();
-    console.log(this.props);
     this.props.history.push("/login");
   }
 
@@ -24,7 +27,9 @@ export class PlayerInfo extends Component {
   }
 
   render() {
+
     if (this.props.player) {
+
       return (
         <div>
           <h1>Hello {this.props.player.username}!</h1>
@@ -33,15 +38,12 @@ export class PlayerInfo extends Component {
           <p> Email: {this.props.player.email} </p>
           <button onClick = {this.logOut} >Logout</button>
           <button onClick = {this.startGame} >Play!!!</button>
-
         </div>
       )
-    } else {
-      return (
-        <h1> Loading... </h1>
-      )
-    }
+
+    } else {return (<h1> Loading... </h1>)}
   }
+
 }
 
 //----- gives us our player info as props
@@ -53,9 +55,7 @@ const mapStateToProps = (state) => {
 
 //----- gives us our set player info function
 const mapDispatchToProps = (dispatch) => ({
-
   setPlayerInfo: (json) => dispatch(setPlayerInfo(json))
-
 })
 
 //----- connects our store with our methods / props

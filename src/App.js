@@ -15,8 +15,13 @@ class App extends Component {
 
     //solution arrays
     const levelOneSolution = [1,1,3]
-    const levelTwoSolution = [2,3,1]
-    const levelThreeSolution = [1,3,1]
+    const levelOneEmoji = "😀😀😀😀😀"
+    const levelTwoSolution = [2,3,1,5,6]
+    const levelTwoEmoji = "😍😍😍😍😍"
+    const levelThreeSolution = [1,3,1,1,2,3,4]
+    const levelThreeEmoji = "👍👍👍👍👍"
+
+
 
     return (
       <Provider store = {store}>
@@ -26,9 +31,9 @@ class App extends Component {
             <Route exact path = "/login" component = { LoginForm }/>
             <Route exact path = "/signup" component = { SignupForm } />
             <Route exact path = "/player" component = { PlayerInfo } />
-            <Route exact path = "/level1" render = { () => <ButtonBomb solution = {levelOneSolution} level = {1} history={this.props.history}/> } />
-            <Route exact path = "/level2" render = { () => <ButtonBomb solution = {levelTwoSolution} level = {2} /> } />
-            <Route exact path = "/level3" render = { () => <ButtonBomb solution = {levelThreeSolution} level = {3} /> } />
+            <Route exact path = "/level1" render = { () => <ButtonBomb solution = {levelOneSolution} level = {1} emoji = {levelOneEmoji} /> } />
+            <Route exact path = "/level2" render = { () => <ButtonBomb solution = {levelTwoSolution} level = {2} emoji = {levelTwoEmoji} /> } />
+            <Route exact path = "/level3" render = { () => <ButtonBomb solution = {levelThreeSolution} level = {3} emoji = {levelThreeEmoji} /> } />
             <Route exact path = "/youlose" render = { () => <YouLose /> } />
         </div>
       </Switch>

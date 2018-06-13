@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { register } from '../actions/playerActions'
 import { connect } from 'react-redux';
 
-
 export class SignupForm extends Component {
 
   state = {
@@ -29,9 +28,11 @@ export class SignupForm extends Component {
 
   render(){
     return (
-      <div>
+      <div className = "signupBG" >
+        <div className= "bluePlanet">
+          <h1 className = "signUpText" > Signup </h1>
+
         <form onSubmit = {this.handleSubmit}>
-          <h1>Signup</h1>
           <div>
             <input
               type = "text"
@@ -40,7 +41,6 @@ export class SignupForm extends Component {
               onChange = {this.handleChange}
               value = {this.state.username}
             />
-            <label htmlFor="username">Username</label>
           </div>
 
           <div>
@@ -51,7 +51,6 @@ export class SignupForm extends Component {
                 onChange = {this.handleChange}
                 value = {this.state.password}
               />
-            <label htmlFor="password">Password</label>
           </div>
 
           <div>
@@ -62,16 +61,16 @@ export class SignupForm extends Component {
                 onChange = {this.handleChange}
                 value = {this.state.email}
               />
-            <label htmlFor="email">Email</label>
           </div>
 
+          <button className = "loginButton" onClick = {this.login}> Login </button>
+          <br/>
           <input type="submit" />
 
         </form>
          <br/>
-
-          <button onClick = {this.login}> Login </button>
-      </div>
+        </div>
+    </div>
 
     )
   }

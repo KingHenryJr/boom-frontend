@@ -5,7 +5,7 @@ import signup from '../assets/img/signup.png'
 
 const homeStyle = {
  width: "100%",
- height: "600px",
+ height: "700px",
  backgroundImage: `url(${introBG})` ,
  backgroundRepeat: 'no-repeat',
  backgroundPosition: 'center center ',
@@ -13,17 +13,19 @@ const homeStyle = {
 }
 
 const loginStyle = {
+  postion: "relative",
   width: "130px",
   height: "80px",
   marginTop: "200px",
-  marginLeft: "80px",
+  marginLeft: "200px",
 }
 
 const signupStyle = {
+  postion: "relative",
   width: "170px",
   height: "80px",
   marginTop: "30px",
-  marginLeft: "80px",
+  marginLeft: "200px",
 }
 
 export default class Home extends Component {

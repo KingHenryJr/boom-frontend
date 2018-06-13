@@ -1,0 +1,181 @@
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #ff217c;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family:  sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.loginButton{
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #ff217c;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family:  sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+.loginButton:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.loginButton:hover, {}
+.loginButton:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+form {
+  margin-left: 100px;
+  margin-top: -100px;
+
+}
+
+.signupBG {
+  background-image: url('../img/space3Final.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+}
+
+.signUpText {
+  font-family: 'snes';
+  font-size: 12vw;
+  letter-spacing: 3px;
+  color: white;
+  position: relative;
+  margin-top: 0px;
+  margin-left: 100px;
+}
+
+/* .bluePlanet {
+
+  position: absolute;
+
+  background-image: url('../img/signupBG.png');
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 500px;
+  height: 500px;
+  top: 120px;
+  right: 520px;
+
+} */
+
+.bombButton {
+  background-image: url('../img/button.png');
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  margin-right: 5px;
+  margin-bottom: 7px;
+}
+
+#root {
+  width: 100%;
+  height: 700px;
+  background-image: url('../img/space.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.gameStyle {
+  width: 100%;
+  height: 900px;
+
+}
+
+.explosion {
+  background-image: url('../img/explosion.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.keypad {
+  position: absolute;
+  width: 100px;
+  overflow: hidden;
+  color: white;
+  right: 150px;
+  top: 259px;
+}
+
+.bombContainer {
+  position: relative;
+  background-image: url('../img/bombFinal.png');
+  background-size: 420px;
+  background-repeat: no-repeat;
+  width: 700px;
+  height: 700px;
+  top: 120px;
+  right: -380px;
+}
+
+@media screen and (min-width:500px) {
+    .gameStyle {
+      width:700px;
+      margin:auto;
+      display:flex;
+    }
+    .keypad {
+      right: 433px;
+      top: 278px;
+    }
+    .bluePlanet {
+      background-size: 200px;
+      right: 70px;
+      top: 100px;
+    }
+}

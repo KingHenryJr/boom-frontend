@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import '../assets/css/lose.css'
 
 export class YouLose extends Component {
 
