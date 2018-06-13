@@ -30,11 +30,10 @@ export class LoginForm extends Component {
 
     return (
 
-      <div>
-        <h1> Login </h1>
+      <div className = "loginBG" >
+        <h1 className = "loginText" > Login </h1>
 
-        <form onSubmit = {this.handleSubmit}>
-
+        <form className = "loginForm" onSubmit = {this.handleSubmit}>
           <div>
             <input
               type = "text"
@@ -43,7 +42,6 @@ export class LoginForm extends Component {
               onChange = {this.handleChange}
               value = {this.state.username}
             />
-            <label htmlFor="username">Username</label>
           </div>
 
           <div>
@@ -54,14 +52,13 @@ export class LoginForm extends Component {
                 onChange = {this.handleChange}
                 value = {this.state.password}
               />
-            <label htmlFor="password">Password</label>
           </div>
 
           <input type="submit" />
+          <br/>
+          <button className = "signupButton" onClick = {this.signUp}> Signup </button>
 
         </form>
-          <br/>
-          <button onClick = {this.signUp}> Signup </button>
       </div>
 
     )

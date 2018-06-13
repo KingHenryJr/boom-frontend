@@ -29,7 +29,7 @@ export class SignupForm extends Component {
   render(){
     return (
       <div className = "signupBG" >
-        <div className= "bluePlanet">
+
           <h1 className = "signUpText" > Signup </h1>
 
         <form onSubmit = {this.handleSubmit}>
@@ -63,13 +63,11 @@ export class SignupForm extends Component {
               />
           </div>
 
-          <button className = "loginButton" onClick = {this.login}> Login </button>
-          <br/>
           <input type="submit" />
+          <br/>
+          <button className = "loginButton" onClick = {this.login}> Login </button>
 
         </form>
-         <br/>
-        </div>
     </div>
 
     )
