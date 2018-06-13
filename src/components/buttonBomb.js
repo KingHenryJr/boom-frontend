@@ -6,6 +6,7 @@ import { setPlayerInfo } from '../actions/actions'
 import { fetchPlayerInfo } from '../actions/playerActions'
 import { withRouter } from 'react-router-dom'
 import explosion from '../assets/img/explosion.gif'
+import Timer from './Timer'
 import '../assets/css/buttonBomb.css'
 
 
@@ -25,7 +26,10 @@ export class ButtonBomb extends Component {
     solution: [],
     badButtons:[],
     level: 0,
-    emoji: ""
+    emoji: "",
+    instructions: "",
+    time: 0,
+    noTime: false
   }
 
 //----- sets initial state with solution + wrong buttons also fetches current player info and sets props
@@ -35,7 +39,12 @@ export class ButtonBomb extends Component {
       badButtons: this.props.wrong,
       level: this.props.level,
       emoji: this.props.emoji,
+      instructions: this.props.instructions,
+      time: this.props.timeLeft,
     });
+
+
+
     fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
   }
 
@@ -62,8 +71,19 @@ export class ButtonBomb extends Component {
       let increaseExplodedCounter = this.props.player.exploded + 1
       let defusedCounter = this.props.player.defused
       exploded(increaseExplodedCounter, defusedCounter)
-      console.log("YOU LOSE!!!!!");
       setTimeout( () => this.props.history.push(`/youlose`), 2300)
+    }
+
+    handleTimeOut = () =>{
+      this.setState({
+        noTime: true
+      })
+    }
+
+    timer = () => {
+      if (this.state.time !== 0) {
+      return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
+      } else {return ""}
     }
 
   render() {
@@ -73,7 +93,7 @@ export class ButtonBomb extends Component {
     let matches = ansArray.map((number, index) => {return solution[index] === number})
 
 //----- loss condition - ADD TIMER CONDITION HERE!!!!!
-    if (matches.includes(false)) {
+    if (matches.includes(false) || this.state.noTime) {
 
         return (
           <div>
@@ -91,37 +111,41 @@ export class ButtonBomb extends Component {
 
 //----- gives us our generic game board
     } else {
-
       return (
+        <div className = "gameBG">
 
-        <div className = "gameStyle" >
+          <div className = "gameStyle" >
 
-          <div className = "bombContainer" >
+            <div className = "bombContainer" >
 
-            <div className = "timer">
+              <div className = "timer" >
+                {this.timer()}
+              </div>
+
+              <div className = "instructionsContainer" >
+
+                <div className = "instructions" >
+                  <h1> {this.state.instructions} </h1>
+                </div>
+
+              </div>
+
+                <div className = "keypad" >
+                  <button onClick = {this.buttonPress} value="1" className = "bombButton" > 1 </button>
+                  <button onClick = {this.buttonPress} value="2" className = "bombButton" > 2 </button>
+                  <button onClick = {this.buttonPress} value="3" className = "bombButton" > 3 </button>
+                  <button onClick = {this.buttonPress} value="4" className = "bombButton" > 4 </button>
+                  <button onClick = {this.buttonPress} value="5" className = "bombButton" > 5 </button>
+                  <button onClick = {this.buttonPress} value="6" className = "bombButton" > 6 </button>
+                  <button onClick = {this.buttonPress} value="7" className = "bombButton" > 7 </button>
+                  <button onClick = {this.buttonPress} value="8" className = "bombButton" > 8 </button>
+                  <button onClick = {this.buttonPress} value="9" className = "bombButton" > 9 </button>
+                </div>
 
             </div>
 
-              <div className = "keypad" >
-                <button onClick = {this.buttonPress} value="1" className = "bombButton" > 1 </button>
-                <button onClick = {this.buttonPress} value="2" className = "bombButton" > 2 </button>
-                <button onClick = {this.buttonPress} value="3" className = "bombButton" > 3 </button>
-                <button onClick = {this.buttonPress} value="4" className = "bombButton" > 4 </button>
-                <button onClick = {this.buttonPress} value="5" className = "bombButton" > 5 </button>
-                <button onClick = {this.buttonPress} value="6" className = "bombButton" > 6 </button>
-                <button onClick = {this.buttonPress} value="7" className = "bombButton" > 7 </button>
-                <button onClick = {this.buttonPress} value="8" className = "bombButton" > 8 </button>
-                <button onClick = {this.buttonPress} value="9" className = "bombButton" > 9 </button>
-              </div>
-
-          </div>
-
-          <div className = "instructions">
-
-          </div>
-
+        </div>
       </div>
-
       )
     }
   }

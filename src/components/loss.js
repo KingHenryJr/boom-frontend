@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import '../assets/css/lose.css'
+
 
 export class YouLose extends Component {
 
@@ -22,12 +22,18 @@ export class YouLose extends Component {
 
   render() {
     return (
-      <div>
-        <h1> YOU LOST!!!! </h1>
-        <button onClick = {this.replay} > replay </button>
-        <button onClick = {this.restart} > restart </button>
-        <button onClick = {this.quit} > quit </button>
-      </div>
+      <div className = "lossBG" >
+        <h1 className = "youLost" > BOOOOM!!!! </h1>
+
+        <div className = "buttonContainer" >
+
+          <button className = "replayButton" onClick = {this.replay} > replay </button>
+
+          <button className = "restartButton" onClick = {this.restart} > restart </button>
+          <button className = "quitButton" onClick = {this.quit} > quit </button>
+        </div>
+
+    </div>
     )
   }
 

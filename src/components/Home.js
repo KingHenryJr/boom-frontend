@@ -18,6 +18,7 @@ const loginStyle = {
   height: "80px",
   marginTop: "200px",
   marginLeft: "200px",
+
 }
 
 const signupStyle = {
