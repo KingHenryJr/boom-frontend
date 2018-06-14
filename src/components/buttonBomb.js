@@ -1,51 +1,60 @@
+// ----- react basics
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
+// ----- keybindings
+import keydown from 'react-keydown';
+// ----- redux actions
 import { exploded } from '../actions/playerActions'
 import { defused } from '../actions/playerActions'
 import { setPlayerInfo } from '../actions/actions'
 import { fetchPlayerInfo } from '../actions/playerActions'
-import { withRouter } from 'react-router-dom'
+// ----- assets
 import explosion from '../assets/img/explosion.gif'
 import Timer from './Timer'
-import '../assets/css/buttonBomb.css'
-
-
-
-const bombStyle = {
-  width: "100%",
-  height: "700px",
-  backgroundSize: "cover",
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-}
+import explosionSound from '../assets/sounds/explosionSound.mp3'
+import Beep2 from '../assets/sounds/Beep2.mp3'
+// ----- css
+import '../assets/css/main.css'
 
 export class ButtonBomb extends Component {
+  constructor() {
+    super();
 
-  state = {
-    buttonsPressed: [],
-    solution: [],
-    badButtons:[],
-    level: 0,
-    emoji: "",
-    instructions: "",
-    time: 0,
-    noTime: false
+    this.state = {
+      buttonsPressed: [],
+      solution: [],
+      badButtons:[],
+      level: 0,
+      emoji: "",
+      instructions: "",
+      time: 0,
+      noTime: false
+    }
+
+    this.explosionSound = new Audio(explosionSound)
+    this.errorBeep = new Audio(Beep2)
   }
+
 
 //----- sets initial state with solution + wrong buttons also fetches current player info and sets props
   componentDidMount(){
-    this.setState({
-      solution: this.props.solution,
-      badButtons: this.props.wrong,
-      level: this.props.level,
-      emoji: this.props.emoji,
-      instructions: this.props.instructions,
-      time: this.props.timeLeft,
-    });
 
+    if( localStorage.getItem('token') === null ) {this.props.history.push('/')} else {
 
+      this.setState({
+        solution: this.props.solution,
+        badButtons: this.props.wrong,
+        level: this.props.level,
+        emoji: this.props.emoji,
+        instructions: this.props.instructions,
+        time: this.props.timeLeft,
+      });
 
-    fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
+      fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
+
+    }
+
   }
 
 //----- sets buttons pressed state to be the value of the button pressed
@@ -54,6 +63,7 @@ export class ButtonBomb extends Component {
       buttonsPressed: [...this.state.buttonsPressed, parseInt(event.target.value)]
     })
   }
+
 
 //----- passes the current exploded + defused info to the exploded function in player action
   win = () => {
@@ -65,26 +75,27 @@ export class ButtonBomb extends Component {
     this.props.history.push(`/level${nextLevel}`)
   }
 
+//----- passes the current exploded + defused info to the exploded function in player action
+  lose = () => {
+    this.errorBeep.play()
+    setTimeout( () => this.explosionSound.play(), 1200)
+    let increaseExplodedCounter = this.props.player.exploded + 1
+    let defusedCounter = this.props.player.defused
+    exploded(increaseExplodedCounter, defusedCounter)
+    setTimeout( () => this.props.history.push(`/youlose`), 2300)
+  }
 
-  //----- passes the current exploded + defused info to the exploded function in player action
-    lose = () => {
-      let increaseExplodedCounter = this.props.player.exploded + 1
-      let defusedCounter = this.props.player.defused
-      exploded(increaseExplodedCounter, defusedCounter)
-      setTimeout( () => this.props.history.push(`/youlose`), 2300)
-    }
+  handleTimeOut = () =>{
+    this.setState({
+      noTime: true
+    })
+  }
 
-    handleTimeOut = () =>{
-      this.setState({
-        noTime: true
-      })
-    }
-
-    timer = () => {
-      if (this.state.time !== 0) {
-      return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
-      } else {return ""}
-    }
+  timer = () => {
+    if (this.state.time !== 0) {
+    return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
+    } else {return ""}
+  }
 
   render() {
 //----- handles combination attempts + maps over buttons pressed array & checks if any comparisons are false
@@ -97,7 +108,8 @@ export class ButtonBomb extends Component {
 
         return (
           <div>
-            <img className = "explosion" src = { explosion } style = { bombStyle }/>
+
+            <img className = "explosion" />
             {this.lose()}
           </div>
         )
@@ -112,8 +124,8 @@ export class ButtonBomb extends Component {
 //----- gives us our generic game board
     } else {
       return (
-        <div className = "gameBG">
 
+        <div className = "gameBG">
           <div className = "gameStyle" >
 
             <div className = "bombContainer" >

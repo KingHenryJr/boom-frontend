@@ -23,10 +23,10 @@ export class YouLose extends Component {
   render() {
     return (
       <div className = "lossBG" >
-        <h1 className = "youLost" > BOOOOM!!!! </h1>
+
 
         <div className = "buttonContainer" >
-
+          <h1 className = "youLost" > BOOOOM!!!! </h1>
           <button className = "replayButton" onClick = {this.replay} > replay </button>
 
           <button className = "restartButton" onClick = {this.restart} > restart </button>

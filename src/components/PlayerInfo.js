@@ -23,7 +23,7 @@ export class PlayerInfo extends Component {
 
 //----- starts level 1
   startGame = () => {
-    this.props.history.push("/level1");
+    this.props.history.push("/intro");
   }
 
   render() {

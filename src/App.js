@@ -8,6 +8,7 @@ import Home from './components/Home'
 import PlayerInfo from './components/PlayerInfo'
 import ButtonBomb from './components/buttonBomb'
 import YouLose from './components/loss'
+import GameIntro from './components/GameIntro'
 
 class App extends Component {
 
@@ -15,7 +16,7 @@ class App extends Component {
 
     //solution arrays
     const levelOneSolution = [1,1,3]
-    const levelOneEmoji = "😀😀😀😀😀"
+    const levelOneEmoji = "👌👌👌👌👌"
     const levelOneInstructions = "Press the First Button Twice then the Third Button Once."
     const levelOneTimer = 1000000
     const levelTwoSolution = [2,3,1,5,6]
@@ -27,6 +28,7 @@ class App extends Component {
     const levelThreeInstructions = "Press the First Button then the Third then the First twice then the Second then the Third then the Fourth."
     const levelThreeTimer = 20
 
+
     return (
       <Provider store = {store}>
         <Switch>
@@ -35,6 +37,7 @@ class App extends Component {
             <Route exact path = "/login" component = { LoginForm }/>
             <Route exact path = "/signup" component = { SignupForm } />
             <Route exact path = "/player" component = { PlayerInfo } />
+            <Route exact path = "/intro" component = { GameIntro } />
             <Route exact path = "/level1" render = { () => <ButtonBomb solution = {levelOneSolution} level = {1} emoji = {levelOneEmoji} instructions = { levelOneInstructions } timeLeft = { levelOneTimer } /> } />
             <Route exact path = "/level2" render = { () => <ButtonBomb solution = {levelTwoSolution} level = {2} emoji = {levelTwoEmoji} instructions = { levelTwoInstructions } timeLeft = { levelTwoTimer } /> } />
             <Route exact path = "/level3" render = { () => <ButtonBomb solution = {levelThreeSolution} level = {3} emoji = {levelThreeEmoji} instructions = { levelThreeInstructions } timeLeft = { levelThreeTimer } /> } />
