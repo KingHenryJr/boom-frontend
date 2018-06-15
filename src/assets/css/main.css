@@ -431,6 +431,47 @@ form[class|=loginForm] {
   right: -380px;
 }
 
+/* ----- player info styling */
+.takeoff {
+  background-image: url('../img/takeoff.png');
+  background-size: 420px;
+  background-repeat: no-repeat;
+}
+
+.zoom {
+  background-image: url('../img/zoom.png');
+  background-size: 80px;
+  background-repeat: no-repeat;
+  width: 100px;
+  length: 100px;
+}
+
+.stargazer {
+  background-image: url('../img/stargazer.png');
+  background-size: 420px;
+  background-repeat: no-repeat;
+}
+
+
+
+.playerBG {
+  position: absolute;
+  width: 100%;
+  height: 750px;
+  margin-top: -30px;
+  background-image: url('../img/space-illustration.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.badges {
+  position: relative;
+  width: 200px;
+  length: 200px;
+
+}
+
 /* ----- responsive stuff? */
 @media screen and (min-width:500px) {
     .gameStyle {

@@ -14,6 +14,9 @@ import explosion from '../assets/img/explosion.gif'
 import Timer from './Timer'
 import explosionSound from '../assets/sounds/explosionSound.mp3'
 import Beep2 from '../assets/sounds/Beep2.mp3'
+import error from '../assets/sounds/error.mp3'
+import almost from '../assets/sounds/almost.mp3'
+import buttonPress from '../assets/sounds/buttonPress.wav'
 // ----- css
 import '../assets/css/main.css'
 
@@ -34,6 +37,9 @@ export class ButtonBomb extends Component {
 
     this.explosionSound = new Audio(explosionSound)
     this.errorBeep = new Audio(Beep2)
+    this.error = new Audio(error)
+    this.almost = new Audio(almost)
+    this.buttonBeep = new Audio(buttonPress)
   }
 
 
@@ -59,6 +65,7 @@ export class ButtonBomb extends Component {
 
 //----- sets buttons pressed state to be the value of the button pressed
   buttonPress = (event) => {
+    this.buttonBeep.play()
     this.setState({
       buttonsPressed: [...this.state.buttonsPressed, parseInt(event.target.value)]
     })
@@ -77,8 +84,7 @@ export class ButtonBomb extends Component {
 
 //----- passes the current exploded + defused info to the exploded function in player action
   lose = () => {
-    this.errorBeep.play()
-    setTimeout( () => this.explosionSound.play(), 1200)
+    this.error.play()
     let increaseExplodedCounter = this.props.player.exploded + 1
     let defusedCounter = this.props.player.defused
     exploded(increaseExplodedCounter, defusedCounter)
@@ -95,6 +101,12 @@ export class ButtonBomb extends Component {
     if (this.state.time !== 0) {
     return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
     } else {return ""}
+  }
+
+  almostLost = () => {
+    if (this.state.time === 2) {
+      this.almost.play()
+    } else { return "" }
   }
 
   render() {
@@ -131,6 +143,7 @@ export class ButtonBomb extends Component {
             <div className = "bombContainer" >
 
               <div className = "timer" >
+                {this.almostLost()}
                 {this.timer()}
               </div>
 

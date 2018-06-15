@@ -26,19 +26,39 @@ export class PlayerInfo extends Component {
     this.props.history.push("/intro");
   }
 
+  showBadge = () => {
+    if (this.props.player.defused > 30) {
+      return <img className = "zoom" />
+    } else if (this.props.player.defuse > 10 && this.props.player.defuse < 30) {
+      return <img className = "takeoff" />
+    } else {
+      return <img className = "stargazer" />
+    }
+
+  }
+
   render() {
 
     if (this.props.player) {
 
       return (
-        <div>
-          <h1>Hello {this.props.player.username}!</h1>
-          <h2>Bombs Defused {this.props.player.defused}</h2>
-          <h2>Bombs Exploded {this.props.player.exploded}</h2>
-          <p> Email: {this.props.player.email} </p>
-          <button onClick = {this.logOut} >Logout</button>
-          <button onClick = {this.startGame} >Play!!!</button>
-        </div>
+        <div className = "playerBG" >
+          <div className = "playerDetails" >
+            <h1>Hello {this.props.player.username}!</h1>
+            <h2>Bombs Defused {this.props.player.defused}</h2>
+            <h2>Bombs Exploded {this.props.player.exploded}</h2>
+            <p> Email: {this.props.player.email} </p>
+            <button onClick = {this.logOut} >Logout</button>
+            <button onClick = {this.startGame} >Play!!!</button>
+          </div>
+          
+          <div className = "badges" >
+            {this.showBadge()}
+          </div>
+
+      </div>
+
+
       )
 
     } else {return (<h1> Loading... </h1>)}
