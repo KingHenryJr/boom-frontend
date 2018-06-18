@@ -340,6 +340,190 @@ form[class|=loginForm] {
   font-size: 20px;
 }
 
+/* ----- wire bomb game styling */
+.wireGameBG {
+  width: 100%;
+  height: 700px;
+  background-image: url('../img/space2.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.wireBombContainer {
+  position: relative;
+  background-image: url('../img/wireBomb.png');
+  background-size: 650px;
+  background-repeat: no-repeat;
+  width: 700px;
+  height: 700px;
+  top: 190px;
+  right: -330px;
+}
+
+.wirepad {
+  position: absolute;
+  width: 800px;
+  height: 220px;
+  color: white;
+  right: 150px;
+  top: 259px;
+
+}
+
+.wireButton1 {
+  position: relative;
+  background-image: url('../img/wire1.png');
+  width: 50px;
+  height: 200px;
+  background-size: 45px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -480px;
+  top: -145px;
+}
+
+.wireButton1C {
+  position: relative;
+  background-image: url('../img/wire1C.png');
+  width: 50px;
+  height: 200px;
+  background-size: 45px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -480px;
+  top: -145px;
+}
+
+.wireButton2 {
+  position: relative;
+  background-image: url('../img/wire2.png');
+  width: 50px;
+  height: 220px;
+  background-size: 43px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -485px;
+  top: -123px;
+}
+
+.wireButton2C {
+  position: relative;
+  background-image: url('../img/wire2C.png');
+  width: 50px;
+  height: 220px;
+  background-size: 43px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -485px;
+  top: -123px;
+}
+
+.wireButton3 {
+  position: relative;
+  background-image: url('../img/wire3.png');
+  width: 50px;
+  height: 220px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -497px;
+  top: -123px;
+}
+
+.wireButton3C {
+  position: relative;
+  background-image: url('../img/wire3C.png');
+  width: 50px;
+  height: 220px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -497px;
+  top: -123px;
+}
+
+.wireButton4 {
+  position: relative;
+  background-image: url('../img/wire4.png');
+  width: 50px;
+  height: 200px;
+  background-size: 45px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -507px;
+  top: -142px;
+}
+
+.wireButton4C {
+  position: relative;
+  background-image: url('../img/wire4C.png');
+  width: 50px;
+  height: 200px;
+  background-size: 45px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -507px;
+  top: -142px;
+}
+
+.wireButton5 {
+  position: relative;
+  background-image: url('../img/wire5.png');
+  width: 60px;
+  height: 200px;
+  background-size: 52px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -520px;
+  top: -140px;
+}
+
+.wireButton5C {
+  position: relative;
+  background-image: url('../img/wire5C.png');
+  width: 60px;
+  height: 200px;
+  background-size: 52px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -520px;
+  top: -140px;
+}
+
+.wireButton5:active{
+  position: relative;
+  background-image: url('../img/wire5.png');
+  width: 60px;
+  height: 200px;
+  background-size: 52px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  right: -520px;
+  top: -140px;
+}
+
+.wireTimer {
+  position: absolute;
+  color: purple;
+  font-size: 34px;
+  font-family: 'Roboto Mono';
+  width: 100px;
+  left: 61px;
+  top: 210px;
+}
+
 /* ----- button bomb game styling */
 .buttonContainer {
   position: absolute;
@@ -364,7 +548,7 @@ form[class|=loginForm] {
   background-repeat: no-repeat;
   background-position: center;
 }
-.gameBG {
+.buttonGameBG {
   width: 100%;
   height: 700px;
   background-image: url('../img/space.gif');
@@ -400,7 +584,7 @@ form[class|=loginForm] {
   background-position: center;
   width: 500px;
   height: 500px;
-  right: 550px;
+  right: 650px;
   bottom: 40px;
 }
 .instructions {

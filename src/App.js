@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import PlayerInfo from './components/PlayerInfo'
 import ButtonBomb from './components/buttonBomb'
+import WireBomb from './components/wireBomb'
 import YouLose from './components/loss'
 import GameIntro from './components/GameIntro'
 
@@ -27,6 +28,10 @@ class App extends Component {
     const levelThreeEmoji = "👍👍👍👍👍"
     const levelThreeInstructions = "Press the First Button then the Third then the First twice then the Second then the Third then the Fourth."
     const levelThreeTimer = 20
+    const levelFourSolution = [4,3,2,1,5]
+    const levelFourEmoji = "❤️❤️❤️❤️❤️"
+    const levelFourInstructions = "4,3,2,1,5"
+    const levelFourTimer = 100000
 
 
     return (
@@ -38,9 +43,10 @@ class App extends Component {
             <Route exact path = "/signup" component = { SignupForm } />
             <Route exact path = "/player" component = { PlayerInfo } />
             <Route exact path = "/intro" component = { GameIntro } />
-            <Route exact path = "/level1" render = { () => <ButtonBomb solution = {levelOneSolution} level = {1} emoji = {levelOneEmoji} instructions = { levelOneInstructions } timeLeft = { levelOneTimer } /> } />
-            <Route exact path = "/level2" render = { () => <ButtonBomb solution = {levelTwoSolution} level = {2} emoji = {levelTwoEmoji} instructions = { levelTwoInstructions } timeLeft = { levelTwoTimer } /> } />
-            <Route exact path = "/level3" render = { () => <ButtonBomb solution = {levelThreeSolution} level = {3} emoji = {levelThreeEmoji} instructions = { levelThreeInstructions } timeLeft = { levelThreeTimer } /> } />
+            <Route exact path = "/level1" render = { () => <ButtonBomb solution = {levelOneSolution} level = {1} emoji = {levelOneEmoji} instructions = {levelOneInstructions} timeLeft = {levelOneTimer} /> } />
+            <Route exact path = "/level2" render = { () => <ButtonBomb solution = {levelTwoSolution} level = {2} emoji = {levelTwoEmoji} instructions = {levelTwoInstructions} timeLeft = {levelTwoTimer} /> } />
+            <Route exact path = "/level3" render = { () => <ButtonBomb solution = {levelThreeSolution} level = {3} emoji = {levelThreeEmoji} instructions = {levelThreeInstructions} timeLeft = {levelThreeTimer} /> } />
+            <Route exact path = "/level4" render = { () => <WireBomb solution = {levelFourSolution} level = {4} emoji = {levelFourEmoji} instructions = {levelFourInstructions} timeLeft = {levelFourTimer} /> } />
             <Route exact path = "/youlose" render = { () => <YouLose /> } />
         </div>
       </Switch>

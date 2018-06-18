@@ -137,7 +137,7 @@ export class ButtonBomb extends Component {
     } else {
       return (
 
-        <div className = "gameBG background">
+        <div className = "buttonGameBG background">
           <div className = "gameStyle" >
 
             <div className = "bombContainer" >
