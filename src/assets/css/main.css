@@ -384,6 +384,10 @@ form[class|=loginForm] {
   top: -145px;
 }
 
+.wireButton1:hover {
+  cursor: pointer;
+}
+
 .wireButton1C {
   position: relative;
   background-image: url('../img/wire1C.png');
@@ -408,6 +412,10 @@ form[class|=loginForm] {
   border: none;
   right: -485px;
   top: -123px;
+}
+
+.wireButton2:hover {
+  cursor: pointer;
 }
 
 .wireButton2C {
@@ -436,6 +444,10 @@ form[class|=loginForm] {
   top: -123px;
 }
 
+.wireButton3:hover {
+  cursor: pointer;
+}
+
 .wireButton3C {
   position: relative;
   background-image: url('../img/wire3C.png');
@@ -460,6 +472,10 @@ form[class|=loginForm] {
   border: none;
   right: -507px;
   top: -142px;
+}
+
+.wireButton4:hover {
+  cursor: pointer;
 }
 
 .wireButton4C {
@@ -488,22 +504,13 @@ form[class|=loginForm] {
   top: -140px;
 }
 
+.wireButton5:hover {
+  cursor: pointer;
+}
+
 .wireButton5C {
   position: relative;
   background-image: url('../img/wire5C.png');
-  width: 60px;
-  height: 200px;
-  background-size: 52px;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  right: -520px;
-  top: -140px;
-}
-
-.wireButton5:active{
-  position: relative;
-  background-image: url('../img/wire5.png');
   width: 60px;
   height: 200px;
   background-size: 52px;
@@ -540,6 +547,11 @@ form[class|=loginForm] {
   margin-right: 5px;
   margin-bottom: 7px;
 }
+
+.bombButton:hover{
+  cursor: pointer;
+}
+
 .explosion {
   background-image: url('../img/explosion.gif');
   width: 100%;
@@ -591,12 +603,12 @@ form[class|=loginForm] {
   position: absolute;
   overflow: hidden;
   width: 250px;
-  height: 200px;
+  height: 300px;
   color: white;
-  font-size: 10px;
+  font-size: 9px;
   font-family: 'Roboto Mono';
   right: 115px;
-  bottom: 195px;
+  bottom: 95px;
 }
 .keypad {
   position: absolute;

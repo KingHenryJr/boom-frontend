@@ -32,7 +32,7 @@ export default class GameIntro extends Component {
         <div className = "countdownContainer" >
           <h1 className = "countdownTimer" > {this.timer()} </h1>
           <h1 className = "countdownInstructions"> Instructions: </h1>
-          <h1 className = "countdownInstructions2"> Follow bomb defusal instructions. <br/> Input the correct numbers into the keypad. <br/> Don't blow it.</h1>
+          <h1 className = "countdownInstructions2"> Follow bomb defusal instructions. <br/> Input the correct numbers into the keypad. <br/> Snip the correct wires. <br/> Don't blow it.</h1>
 
         </div>
       </div>

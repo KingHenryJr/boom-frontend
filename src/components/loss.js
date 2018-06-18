@@ -27,9 +27,9 @@ export class YouLose extends Component {
 
         <div className = "buttonContainer" >
           <h1 className = "youLost" > BOOOOM!!!! </h1>
-          <button className = "replayButton" onClick = {this.replay} > replay </button>
+          <button className = "replayButton" onClick = {this.replay} > try again </button>
 
-          <button className = "restartButton" onClick = {this.restart} > restart </button>
+          <button className = "restartButton" onClick = {this.restart} > start over </button>
           <button className = "quitButton" onClick = {this.quit} > quit </button>
         </div>
 
