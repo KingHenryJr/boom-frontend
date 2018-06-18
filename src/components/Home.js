@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import introBG from '../assets/img/introBG.jpg'
-import login from '../assets/img/login.png'
-import signup from '../assets/img/signup.png'
-
 
 export default class Home extends Component {
 
@@ -17,11 +13,11 @@ export default class Home extends Component {
   render() {
 
     return (
-      <div className = "homeBGColor" >
+      <div className = "homeBGColor background" >
         <div className = "homeStyle" >
-          <h1 className = "homeLogin" onClick = {this.login} />
+          <h1 className = "homeLogin" onClick = {this.login} > </h1>
           <br/>
-          <h1 className = "homeSignup" onClick = {this.signUp} />
+          <h1 className = "homeSignup" onClick = {this.signUp} > </h1>
         </div>
      </div>
     )

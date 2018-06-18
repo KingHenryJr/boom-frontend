@@ -22,7 +22,7 @@ export class YouLose extends Component {
 
   render() {
     return (
-      <div className = "lossBG" >
+      <div className = "lossBG background" >
 
 
         <div className = "buttonContainer" >

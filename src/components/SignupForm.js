@@ -28,7 +28,7 @@ export class SignupForm extends Component {
 
   render(){
     return (
-      <div className = "signupBG" >
+      <div className = "signupBG background" >
 
           <h1 className = "signUpText" > Signup </h1>
 

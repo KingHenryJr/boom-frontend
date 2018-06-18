@@ -18,7 +18,7 @@ class App extends Component {
     const levelOneSolution = [1,1,3]
     const levelOneEmoji = "👌👌👌👌👌"
     const levelOneInstructions = "Press the First Button Twice then the Third Button Once."
-    const levelOneTimer = 1000000
+    const levelOneTimer = 15
     const levelTwoSolution = [2,3,1,5,6]
     const levelTwoEmoji = "😍😍😍😍😍"
     const levelTwoInstructions = "Press the Second Button then the Third then the First then the Fifth then the Sixth."

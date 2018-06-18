@@ -121,7 +121,7 @@ export class ButtonBomb extends Component {
         return (
           <div>
 
-            <img className = "explosion" />
+            <img className = "explosion background" />
             {this.lose()}
           </div>
         )
@@ -137,7 +137,7 @@ export class ButtonBomb extends Component {
     } else {
       return (
 
-        <div className = "gameBG">
+        <div className = "gameBG background">
           <div className = "gameStyle" >
 
             <div className = "bombContainer" >

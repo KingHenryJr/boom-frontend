@@ -30,7 +30,7 @@ export class LoginForm extends Component {
 
     return (
 
-      <div className = "loginBG" >
+      <div className = "loginBG background" >
         <h1 className = "loginText" > Login </h1>
 
         <form className = "loginForm" onSubmit = {this.handleSubmit}>
