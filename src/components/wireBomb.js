@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
+// -----Popups
+import Popup from "reactjs-popup";
+
 // ----- redux actions
 import { exploded } from '../actions/playerActions'
 import { defused } from '../actions/playerActions'
@@ -113,7 +116,7 @@ export class WireBomb extends Component {
 
 
 
-  //----- passes the current exploded + defused info to the exploded function in player action
+  //----- passes the current exploded + defused info to the exploded function in player action + modal victory screen
     win = () => {
       this.backgroundCountdown.pause()
       this.backgroundCountdown.currentTime = 0
@@ -121,8 +124,12 @@ export class WireBomb extends Component {
       let explodedCounter = this.props.player.exploded
       let nextLevel = this.state.level + 1
       defused(increaseDefusedCounter, explodedCounter)
-      alert(`${this.state.emoji}`)
-      this.props.history.push(`/level${nextLevel}`)
+      return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick >
+             <span> YAY!!!!!!!</span>
+               <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+                Continue!
+              </button>
+            </Popup>
     }
 
   //----- passes the current exploded + defused info to the exploded function in player action

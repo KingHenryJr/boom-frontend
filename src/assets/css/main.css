@@ -288,7 +288,7 @@ form[class|=loginForm] {
   color: #fff;
   letter-spacing: 3.3px;
   text-align: center;
-  right: -5px;
+  right: 200px;
   bottom: -100px;
 }
 
@@ -382,10 +382,11 @@ form[class|=loginForm] {
   border: none;
   right: -480px;
   top: -145px;
+  outline: none;
 }
 
 .wireButton1:hover {
-  cursor: pointer;
+  cursor: url('../img/pliers.png') 25 15, auto;
 }
 
 .wireButton1C {
@@ -399,6 +400,9 @@ form[class|=loginForm] {
   border: none;
   right: -480px;
   top: -145px;
+  outline: none;
+  cursor: url('../img/plier2.png') 25 15, auto;
+
 }
 
 .wireButton2 {
@@ -412,10 +416,11 @@ form[class|=loginForm] {
   border: none;
   right: -485px;
   top: -123px;
+  outline: none;
 }
 
 .wireButton2:hover {
-  cursor: pointer;
+  cursor: url('../img/pliers.png') 25 15, auto;
 }
 
 .wireButton2C {
@@ -429,6 +434,8 @@ form[class|=loginForm] {
   border: none;
   right: -485px;
   top: -123px;
+  outline: none;
+  cursor: url('../img/plier2.png') 25 15, auto;
 }
 
 .wireButton3 {
@@ -442,11 +449,14 @@ form[class|=loginForm] {
   border: none;
   right: -497px;
   top: -123px;
+  outline: none;
 }
 
 .wireButton3:hover {
-  cursor: pointer;
+  cursor: url('../img/pliers.png') 25 15, auto;
 }
+
+
 
 .wireButton3C {
   position: relative;
@@ -459,6 +469,8 @@ form[class|=loginForm] {
   border: none;
   right: -497px;
   top: -123px;
+  outline: none;
+  cursor: url('../img/plier2.png') 25 15, auto;
 }
 
 .wireButton4 {
@@ -472,10 +484,11 @@ form[class|=loginForm] {
   border: none;
   right: -507px;
   top: -142px;
+  outline: none;
 }
 
 .wireButton4:hover {
-  cursor: pointer;
+  cursor: url('../img/pliers.png') 25 15, auto;
 }
 
 .wireButton4C {
@@ -489,6 +502,8 @@ form[class|=loginForm] {
   border: none;
   right: -507px;
   top: -142px;
+  outline: none;
+  cursor: url('../img/plier2.png') 25 15, auto;
 }
 
 .wireButton5 {
@@ -502,10 +517,11 @@ form[class|=loginForm] {
   border: none;
   right: -520px;
   top: -140px;
+  outline: none;
 }
 
 .wireButton5:hover {
-  cursor: pointer;
+  cursor: url('../img/pliers.png') 25 15, auto;
 }
 
 .wireButton5C {
@@ -519,6 +535,8 @@ form[class|=loginForm] {
   border: none;
   right: -520px;
   top: -140px;
+  outline: none;
+  cursor: url('../img/plier2.png') 25 15, auto;
 }
 
 .wireTimer {
@@ -546,10 +564,12 @@ form[class|=loginForm] {
   color: white;
   margin-right: 5px;
   margin-bottom: 7px;
+  outline: none;
 }
 
 .bombButton:hover{
   cursor: pointer;
+  outline: none;
 }
 
 .explosion {
@@ -626,7 +646,7 @@ form[class|=loginForm] {
   width: 700px;
   height: 700px;
   top: 120px;
-  right: -380px;
+  right: -450px;
 }
 
 /* ----- player info styling */
@@ -833,6 +853,42 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
+
+/* ----- modals */
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
 
 /* ----- responsive stuff? */
 @media screen and (min-width:500px) {

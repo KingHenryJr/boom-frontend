@@ -19,11 +19,11 @@ class App extends Component {
     const levelOneSolution = [1,1,3,1,1,3]
     const levelOneEmoji = "👌👌👌👌👌"
     const levelOneInstructions = "Press the First Button Twice then the Third Button Once. Repeat"
-    const levelOneTimer = 10
+    const levelOneTimer = 10000
     const levelTwoSolution = [1,3,5]
     const levelTwoEmoji = "😍😍😍😍😍"
     const levelTwoInstructions = "Cut wires Left to Right. Cut all odd wires."
-    const levelTwoTimer = 15
+    const levelTwoTimer = 10000
     const levelThreeSolution = [2,9,7,2]
     const levelThreeEmoji = "👍👍👍👍👍"
     const levelThreeInstructions = "Never press the Fifth Button. Press the Second Button. Then the Ninth. Then the Seventh. Then the Fifth. Then the Second."
