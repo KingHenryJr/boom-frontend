@@ -17,6 +17,7 @@ import Beep2 from '../assets/sounds/Beep2.mp3'
 import error from '../assets/sounds/error.mp3'
 import almost from '../assets/sounds/almost.mp3'
 import buttonPress from '../assets/sounds/buttonPress.wav'
+import countdownClock from '../assets/sounds/countdownClock.mp3'
 // ----- css
 import '../assets/css/main.css'
 
@@ -40,6 +41,7 @@ export class ButtonBomb extends Component {
     this.error = new Audio(error)
     this.almost = new Audio(almost)
     this.buttonBeep = new Audio(buttonPress)
+    this.backgroundCountdown = new Audio(countdownClock)
   }
 
 
@@ -58,6 +60,7 @@ export class ButtonBomb extends Component {
       });
 
       fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
+      {this.backgroundCountdown.play()}
 
     }
 
@@ -74,6 +77,8 @@ export class ButtonBomb extends Component {
 
 //----- passes the current exploded + defused info to the exploded function in player action
   win = () => {
+    this.backgroundCountdown.pause()
+    this.backgroundCountdown.currentTime = 0
     let increaseDefusedCounter = this.props.player.defused + 1
     let explodedCounter = this.props.player.exploded
     let nextLevel = this.state.level + 1
@@ -84,6 +89,8 @@ export class ButtonBomb extends Component {
 
 //----- passes the current exploded + defused info to the exploded function in player action
   lose = () => {
+    this.backgroundCountdown.pause()
+    this.backgroundCountdown.currentTime = 0
     this.error.play()
     let increaseExplodedCounter = this.props.player.exploded + 1
     let defusedCounter = this.props.player.defused
@@ -138,11 +145,13 @@ export class ButtonBomb extends Component {
       return (
 
         <div className = "buttonGameBG background">
+
           <div className = "gameStyle" >
 
             <div className = "bombContainer" >
 
               <div className = "timer" >
+
                 {this.almostLost()}
                 {this.timer()}
               </div>

@@ -12,7 +12,7 @@ import { fetchPlayerInfo } from '../actions/playerActions'
 // ----- assets
 import Timer from './Timer'
 import snip from '../assets/sounds/snip.mp3'
-import explosion from '../assets/img/explosion.gif'
+import tickingClock from '../assets/sounds/tickingClock.mp3'
 import explosionSound from '../assets/sounds/explosionSound.mp3'
 import Beep2 from '../assets/sounds/Beep2.mp3'
 import error from '../assets/sounds/error.mp3'
@@ -42,6 +42,8 @@ export class WireBomb extends Component {
     this.error = new Audio(error)
     this.almost = new Audio(almost)
     this.snip = new Audio(snip)
+    this.backgroundCountdown = new Audio(tickingClock)
+
   }
 
 //----- sets initial state with solution + wrong buttons also fetches current player info and sets props
@@ -58,6 +60,8 @@ export class WireBomb extends Component {
       });
 
       fetchPlayerInfo().then(json => {this.props.setPlayerInfo(json)});
+      {this.backgroundCountdown.play()}
+
     }
   }
 
@@ -107,8 +111,12 @@ export class WireBomb extends Component {
       })
     }
 
+
+
   //----- passes the current exploded + defused info to the exploded function in player action
     win = () => {
+      this.backgroundCountdown.pause()
+      this.backgroundCountdown.currentTime = 0
       let increaseDefusedCounter = this.props.player.defused + 1
       let explodedCounter = this.props.player.exploded
       let nextLevel = this.state.level + 1
@@ -119,6 +127,8 @@ export class WireBomb extends Component {
 
   //----- passes the current exploded + defused info to the exploded function in player action
     lose = () => {
+      this.backgroundCountdown.pause()
+      this.backgroundCountdown.currentTime = 0
       this.error.play()
       let increaseExplodedCounter = this.props.player.exploded + 1
       let defusedCounter = this.props.player.defused
@@ -144,6 +154,7 @@ export class WireBomb extends Component {
     let solution = this.state.solution
     let ansArray = this.state.buttonsPressed
     let matches = ansArray.map((number, index) => {return solution[index] === number})
+
 
 //----- loss condition - ADD TIMER CONDITION HERE!!!!!
     if (matches.includes(false) || this.state.noTime) {
