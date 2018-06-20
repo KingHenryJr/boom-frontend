@@ -124,11 +124,8 @@ export class WireBomb extends Component {
       let explodedCounter = this.props.player.exploded
       let nextLevel = this.state.level + 1
       defused(increaseDefusedCounter, explodedCounter)
-      return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick >
-             <span> YAY!!!!!!!</span>
-               <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
-                Continue!
-              </button>
+      return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick = {false} >
+              {this.modalContent()}
             </Popup>
     }
 
@@ -155,6 +152,18 @@ export class WireBomb extends Component {
       } else {return ""}
     }
 
+    modalContent = () => {
+      let nextLevel = this.state.level + 1
+
+       return <div>
+       <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+       <br/>
+       <h1 className = "lvlComplete2" >COMPLETED! </h1>
+       <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+        Continue
+      </button>
+      </div>
+    }
 
   render() {
 //----- handles combination attempts + maps over buttons pressed array & checks if any comparisons are false

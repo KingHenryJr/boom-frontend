@@ -84,11 +84,9 @@ export class ButtonBomb extends Component {
     let explodedCounter = this.props.player.exploded
     let nextLevel = this.state.level + 1
     defused(increaseDefusedCounter, explodedCounter)
-    return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick >
-           <span> YAY!!!!!!!</span>
-             <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
-              close modal
-            </button>
+
+    return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick = {false} >
+            {this.modalContent()}
           </Popup>
   }
 
@@ -115,10 +113,18 @@ export class ButtonBomb extends Component {
     } else {return ""}
   }
 
-  almostLost = () => {
-    if (this.state.time === 2) {
-      this.almost.play()
-    } else { return "" }
+  modalContent = () => {
+    let nextLevel = this.state.level + 1
+
+     return <div>
+     <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+     <br/>
+     <h1 className = "lvlComplete2" >COMPLETED! </h1>
+     <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+      Continue
+    </button>
+    </div>
+
   }
 
   render() {
@@ -157,7 +163,6 @@ export class ButtonBomb extends Component {
 
               <div className = "timer" >
 
-                {this.almostLost()}
                 {this.timer()}
               </div>
 

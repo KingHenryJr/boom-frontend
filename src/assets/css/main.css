@@ -557,12 +557,12 @@ form[class|=loginForm] {
 }
 .bombButton {
   background-image: url('../img/button.png');
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  margin-right: 5px;
+  margin-right: 7px;
   margin-bottom: 7px;
   outline: none;
 }
@@ -599,7 +599,7 @@ form[class|=loginForm] {
   font-family: 'Roboto Mono';
   width: 100px;
   left: 175px;
-  top: 146px;
+  top: 157px;
 
 }
 .explosion {
@@ -632,20 +632,20 @@ form[class|=loginForm] {
 }
 .keypad {
   position: absolute;
-  width: 100px;
+  width: 140px;
   overflow: hidden;
   color: white;
-  right: 150px;
+  right: 160px;
   top: 259px;
 }
 .bombContainer {
   position: relative;
   background-image: url('../img/bombFinal.png');
-  background-size: 420px;
+  background-size: 450px;
   background-repeat: no-repeat;
   width: 700px;
   height: 700px;
-  top: 120px;
+  top: 165px;
   right: -450px;
 }
 
@@ -855,6 +855,70 @@ form[class|=loginForm] {
 }
 
 /* ----- modals */
+
+
+
+.closeModalButton{
+  position: relative;
+  margin-top: 28px;
+  width: 200px;
+  height: 55px;
+  background: #ff217c;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Roboto Mono';
+  font-weight: 500;
+  font-size: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+  bottom: 60px;
+  right: -72px;
+}
+.closeModalButton:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.closeModalButton:hover, {}
+.closeModalButton:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.popup-content {
+  height: 400px;
+  width: 800px !important;
+  background-image: url('../img/modalBG.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  border: none !important; 
+}
+
+.lvlComplete {
+  position: relative;
+  font-family: 'Roboto Mono';
+  font-size: 40px;
+  letter-spacing: 5px;
+  color: white;
+  top: 35px;
+  right: -70px;
+}
+
+.lvlComplete2 {
+  position: relative;
+  font-family: 'Roboto Mono';
+  font-size: 40px;
+  letter-spacing: 5px;
+  color: white;
+  top: -35px;
+  right: -70px;
+}
+
 .modal {
   font-size: 12px;
 }
@@ -866,11 +930,13 @@ form[class|=loginForm] {
   padding: 5px;
 }
 .modal > .content {
-  width: 100%;
+  width: 400px;
+  height: 400px;
   padding: 10px 5px;
 }
 .modal > .actions {
-  width: 100%;
+  width: 400px;
+  height: 400px;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
@@ -884,7 +950,6 @@ form[class|=loginForm] {
   right: -10px;
   top: -10px;
   font-size: 24px;
-  background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
@@ -898,8 +963,8 @@ form[class|=loginForm] {
       display:flex;
     }
     .keypad {
-      right: 433px;
-      top: 278px;
+      right: 389px;
+      top: 293px;
       position: center;
     }
     .bluePlanet {
