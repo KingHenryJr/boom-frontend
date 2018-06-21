@@ -1,19 +1,15 @@
-
-
 #root {
   background-color: #483c6c;
   width: 100%;
   height: 900px;
   background-size: cover;
 }
-
 /* Home page styling */
 .homeBGColor {
   width: 100%;
   height: 700px;
   background-color: #181743;
 }
-
 .homeStyle {
   width: 100%;
   height: 700px;
@@ -22,7 +18,6 @@
   background-position: center;
   position: absolute;
 }
-
 .homeLogin {
   background-image: url('../img/login.png');
   background-repeat: no-repeat;
@@ -33,7 +28,9 @@
   top: 200px;
   left: 150px;
 }
-
+.homeLogin:hover {
+  cursor: pointer;
+}
 .homeSignup {
   background-image: url('../img/signup.png');
   background-repeat: no-repeat;
@@ -44,7 +41,9 @@
   top: 60px;
   left: 150px;
 }
-
+.homeSignup:hover {
+  cursor: pointer;
+}
 /* sign up + login input styling */
 input[type="text"],
 input[type="password"] {
@@ -100,7 +99,6 @@ form[class|=loginForm] {
   margin-left: 850px;
   margin-top: 140px;
 }
-
 /* ----- login button styling */
 .loginButton{
   margin-top: 28px;
@@ -127,7 +125,6 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
 /* ----- signup button styling */
 .signupButton{
   margin-top: 28px;
@@ -154,7 +151,6 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
 /* ----- login page styling */
 .loginText {
   font-family: 'snes';
@@ -174,7 +170,6 @@ form[class|=loginForm] {
   width: 100%;
   height: 700px;
 }
-
 /* ----- signup page styling */
 .signupBG {
   background-image: url('../img/space3Final.jpg');
@@ -193,7 +188,6 @@ form[class|=loginForm] {
   margin-top: 0px;
   margin-left: 100px;
 }
-
 /* ----- loss page button styling */
 .replayButton {
   margin-top: 28px;
@@ -277,7 +271,6 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
 /* ----- loss page image / bg styling */
 .youLost {
   width: 100px;
@@ -291,7 +284,6 @@ form[class|=loginForm] {
   right: 200px;
   bottom: -100px;
 }
-
 .lossBG {
   position: absolute;
   width: 100%;
@@ -302,7 +294,6 @@ form[class|=loginForm] {
   background-position: center;
   background-size: cover;
 }
-
 .gameIntroBG {
   position: absolute;
   width: 100%;
@@ -312,26 +303,22 @@ form[class|=loginForm] {
   background-position: center;
   background-size: cover;
 }
-
 .countdownTimer {
   position: relative;
   font-size: 100px;
   font-family: 'Roboto Mono';
   color: white;
 }
-
 .countdownContainer {
   position: absolute;
   left: 40px;
 }
-
 .countdownInstructions {
   position: relative;
   color: white;
   font-family: 'Roboto Mono';
   top: 20px;
 }
-
 .countdownInstructions2 {
   position: relative;
   color: white;
@@ -339,7 +326,6 @@ form[class|=loginForm] {
   top: 20px;
   font-size: 20px;
 }
-
 /* ----- wire bomb game styling */
 .wireGameBG {
   width: 100%;
@@ -349,7 +335,6 @@ form[class|=loginForm] {
   background-position: center;
   background-size: cover;
 }
-
 .wireBombContainer {
   position: relative;
   background-image: url('../img/wireBomb.png');
@@ -360,7 +345,6 @@ form[class|=loginForm] {
   top: 190px;
   right: -330px;
 }
-
 .wirepad {
   position: absolute;
   width: 800px;
@@ -370,7 +354,6 @@ form[class|=loginForm] {
   top: 259px;
 
 }
-
 .wireButton1 {
   position: relative;
   background-image: url('../img/wire1.png');
@@ -384,11 +367,9 @@ form[class|=loginForm] {
   top: -145px;
   outline: none;
 }
-
 .wireButton1:hover {
   cursor: url('../img/pliers.png') 25 15, auto;
 }
-
 .wireButton1C {
   position: relative;
   background-image: url('../img/wire1C.png');
@@ -404,7 +385,6 @@ form[class|=loginForm] {
   cursor: url('../img/plier2.png') 25 15, auto;
 
 }
-
 .wireButton2 {
   position: relative;
   background-image: url('../img/wire2.png');
@@ -418,11 +398,9 @@ form[class|=loginForm] {
   top: -123px;
   outline: none;
 }
-
 .wireButton2:hover {
   cursor: url('../img/pliers.png') 25 15, auto;
 }
-
 .wireButton2C {
   position: relative;
   background-image: url('../img/wire2C.png');
@@ -437,7 +415,6 @@ form[class|=loginForm] {
   outline: none;
   cursor: url('../img/plier2.png') 25 15, auto;
 }
-
 .wireButton3 {
   position: relative;
   background-image: url('../img/wire3.png');
@@ -451,13 +428,9 @@ form[class|=loginForm] {
   top: -123px;
   outline: none;
 }
-
 .wireButton3:hover {
   cursor: url('../img/pliers.png') 25 15, auto;
 }
-
-
-
 .wireButton3C {
   position: relative;
   background-image: url('../img/wire3C.png');
@@ -472,7 +445,6 @@ form[class|=loginForm] {
   outline: none;
   cursor: url('../img/plier2.png') 25 15, auto;
 }
-
 .wireButton4 {
   position: relative;
   background-image: url('../img/wire4.png');
@@ -486,11 +458,9 @@ form[class|=loginForm] {
   top: -142px;
   outline: none;
 }
-
 .wireButton4:hover {
   cursor: url('../img/pliers.png') 25 15, auto;
 }
-
 .wireButton4C {
   position: relative;
   background-image: url('../img/wire4C.png');
@@ -505,7 +475,6 @@ form[class|=loginForm] {
   outline: none;
   cursor: url('../img/plier2.png') 25 15, auto;
 }
-
 .wireButton5 {
   position: relative;
   background-image: url('../img/wire5.png');
@@ -519,11 +488,9 @@ form[class|=loginForm] {
   top: -140px;
   outline: none;
 }
-
 .wireButton5:hover {
   cursor: url('../img/pliers.png') 25 15, auto;
 }
-
 .wireButton5C {
   position: relative;
   background-image: url('../img/wire5C.png');
@@ -538,17 +505,15 @@ form[class|=loginForm] {
   outline: none;
   cursor: url('../img/plier2.png') 25 15, auto;
 }
-
 .wireTimer {
   position: absolute;
   color: purple;
   font-size: 34px;
   font-family: 'Roboto Mono';
   width: 100px;
-  left: 71px;
+  left: 80px;
   top: 210px;
 }
-
 /* ----- button bomb game styling */
 .buttonContainer {
   position: absolute;
@@ -566,12 +531,10 @@ form[class|=loginForm] {
   margin-bottom: 7px;
   outline: none;
 }
-
 .bombButton:hover{
   cursor: pointer;
   outline: none;
 }
-
 .explosion {
   background-image: url('../img/explosion.gif');
   width: 100%;
@@ -598,7 +561,7 @@ form[class|=loginForm] {
   font-size: 34px;
   font-family: 'Roboto Mono';
   width: 100px;
-  left: 175px;
+  left: 190px;
   top: 157px;
 
 }
@@ -648,7 +611,6 @@ form[class|=loginForm] {
   top: 165px;
   right: -450px;
 }
-
 /* ----- player info styling */
 .veteranExplorer {
   color: white;
@@ -670,7 +632,6 @@ form[class|=loginForm] {
   letter-spacing: 4px;
   top: 10px;
 }
-
 .takeoff {
   position: relative;
   background-image: url('../img/takeoff.png');
@@ -699,7 +660,6 @@ form[class|=loginForm] {
   height: 500px;
   border: 0px;
 }
-
 .bombText {
   position: relative;
   font-family: "Roboto Mono";
@@ -714,7 +674,6 @@ form[class|=loginForm] {
   right: -220px;
   bottom: 20px;
 }
-
 .heartIcon {
   position: relative;
   background-image: url('../img/heartIcon.png');
@@ -737,7 +696,6 @@ form[class|=loginForm] {
   right: -100px;
   bottom: -35px;
 }
-
 .nameIntro {
   position: relative;
   font-family: "snes";
@@ -748,7 +706,6 @@ form[class|=loginForm] {
   right: -100px;
   bottom: -120px;
 }
-
 .playerBG {
   position: absolute;
   width: 100%;
@@ -760,7 +717,6 @@ form[class|=loginForm] {
   -o-background-size: cover;
    background-size: cover;
 }
-
 .background{
  z-index: 9999;
  width: 100%;
@@ -769,7 +725,6 @@ form[class|=loginForm] {
  top: 0;
  left: 0;
 }
-
 .lvl {
   position: absolute;
   width: 600px;
@@ -786,7 +741,6 @@ form[class|=loginForm] {
   border: 10px;
   border-radius: -100px;
 }
-
 .playerDetails {
   height: 800px;
   width: 500px;
@@ -825,7 +779,6 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
 .playerStart{
   margin-top: 28px;
   margin-right: 10px;
@@ -853,11 +806,128 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
+/* ----- victory */
+.youWin {
+  width: 900px;
+  height: 200px;
+  position: relative;
+  font-family: 'snes';
+  font-size: 200px;
+  color: #fff;
+  letter-spacing: 8px;
+  text-align: center;
+  right: -300px;
+  bottom: -100px;
+}
+.victoryBG {
+  position: absolute;
+  width: 100%;
+  height: 1200px;
+  margin-top: -30px;
+  background-image: url('../img/victory.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.victoryButtonContainer {
+  position: absolute;
+  height: 100px;
+  right: 250px;
+}
+.victoryRestartButton {
+  position: relative;
+  margin-top: 28px;
+  margin-right: 10px;
+  width: 200px;
+  height: 55px;
+  background: #ff217c;
+  letter-spacing: 2.3px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Roboto Mono';
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+  right: -600px;
+}
+.victoryRestartButton:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.victoryRestartButton:hover, {}
+.victoryRestartButton:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.victoryQuitButton {
+  position: relative;
+  margin-top: 28px;
+  width: 200px;
+  height: 55px;
+  background: #ff217c;
+  letter-spacing: 2.3px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Roboto Mono';
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+  right: -600px;
+}
+.victoryQuitButton:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+.victoryQuitButton:hover, {}
+.victoryQuitButton:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
 /* ----- modals */
-
-
-
+.threeStars {
+  position: relative;
+  background-image: url('../img/3stars.png');
+  background-size: 350px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: 350px;
+  border: none;
+  top: -170px;
+  right: -410px;
+}
+.twoStars {
+  position: relative;
+  background-image: url('../img/2stars.png');
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: 300px;
+  border: none;
+  top: -180px;
+  right: -430px;
+}
+.oneStar {
+  position: relative;
+  background-image: url('../img/1stars.png');
+  background-size: 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: 300px;
+  border: none;
+  top: -200px;
+  right: -460px;
+}
 .closeModalButton{
   position: relative;
   margin-top: 28px;
@@ -874,7 +944,7 @@ form[class|=loginForm] {
   text-transform: uppercase;
   transition: 0.1s ease;
   cursor: pointer;
-  bottom: 60px;
+  bottom: -10px;
   right: -72px;
 }
 .closeModalButton:active {
@@ -888,7 +958,6 @@ form[class|=loginForm] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
-
 .popup-content {
   height: 400px;
   width: 800px !important;
@@ -896,10 +965,18 @@ form[class|=loginForm] {
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
-  border: none !important; 
+  border: none !important;
 }
-
 .lvlComplete {
+  position: relative;
+  font-family: 'Roboto Mono';
+  font-size: 40px;
+  letter-spacing: 5px;
+  color: white;
+  top: 100px;
+  right: -70px;
+}
+.lvlComplete2 {
   position: relative;
   font-family: 'Roboto Mono';
   font-size: 40px;
@@ -908,17 +985,15 @@ form[class|=loginForm] {
   top: 35px;
   right: -70px;
 }
-
-.lvlComplete2 {
+.modalTimeRemaining {
   position: relative;
   font-family: 'Roboto Mono';
-  font-size: 40px;
-  letter-spacing: 5px;
+  font-size: 25px;
   color: white;
-  top: -35px;
-  right: -70px;
+  letter-spacing: 3px;
+  top: -600px;
+  right: -520px;
 }
-
 .modal {
   font-size: 12px;
 }
@@ -953,8 +1028,6 @@ form[class|=loginForm] {
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
-
-
 /* ----- responsive stuff? */
 @media screen and (min-width:500px) {
     .gameStyle {

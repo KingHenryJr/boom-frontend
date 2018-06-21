@@ -19,9 +19,13 @@ export default class GameIntro extends Component {
     this.props.history.push("/level1")
   }
 
+  handleSeconds = () => {
+    return ""
+  }
+
   timer = () => {
     if (this.state.time !== 0) {
-    return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
+    return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } handleSeconds = { this.handleSeconds } />
     } else {return ""}
   }
 

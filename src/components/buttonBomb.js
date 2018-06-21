@@ -19,6 +19,7 @@ import error from '../assets/sounds/error.mp3'
 import almost from '../assets/sounds/almost.mp3'
 import buttonPress from '../assets/sounds/buttonPress.wav'
 import countdownClock from '../assets/sounds/countdownClock.mp3'
+import victory from '../assets/sounds/victory.mp3'
 // ----- css
 import '../assets/css/main.css'
 
@@ -31,10 +32,11 @@ export class ButtonBomb extends Component {
       solution: [],
       badButtons:[],
       level: 0,
-      emoji: "",
       instructions: "",
       time: 0,
-      noTime: false
+      noTime: false,
+      timeRemaining: 0,
+      win: null,
     }
 
     this.explosionSound = new Audio(explosionSound)
@@ -43,6 +45,7 @@ export class ButtonBomb extends Component {
     this.almost = new Audio(almost)
     this.buttonBeep = new Audio(buttonPress)
     this.backgroundCountdown = new Audio(countdownClock)
+    this.victory = new Audio(victory)
   }
 
 
@@ -55,7 +58,6 @@ export class ButtonBomb extends Component {
         solution: this.props.solution,
         badButtons: this.props.wrong,
         level: this.props.level,
-        emoji: this.props.emoji,
         instructions: this.props.instructions,
         time: this.props.timeLeft,
       });
@@ -78,16 +80,16 @@ export class ButtonBomb extends Component {
 
 //----- passes the current exploded + defused info to the exploded function in player action + modal victory screen
   win = () => {
-    this.backgroundCountdown.pause()
-    this.backgroundCountdown.currentTime = 0
-    let increaseDefusedCounter = this.props.player.defused + 1
-    let explodedCounter = this.props.player.exploded
-    let nextLevel = this.state.level + 1
-    defused(increaseDefusedCounter, explodedCounter)
-
-    return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick = {false} >
-            {this.modalContent()}
-          </Popup>
+    if (!this.state.win) {
+      console.log("WINNNNNNNNNNNING")
+      this.victory.play()
+      this.backgroundCountdown.pause()
+      this.backgroundCountdown.currentTime = 0
+      let increaseDefusedCounter = this.props.player.defused + 1
+      let explodedCounter = this.props.player.exploded
+      let nextLevel = this.state.level + 1
+      defused(increaseDefusedCounter, explodedCounter)
+    }
   }
 
 //----- passes the current exploded + defused info to the exploded function in player action
@@ -101,29 +103,64 @@ export class ButtonBomb extends Component {
     setTimeout( () => this.props.history.push(`/youlose`), 2300)
   }
 
-  handleTimeOut = () =>{
-    this.setState({
-      noTime: true
-    })
+  handleTimeOut = () => {
+      this.setState({noTime: true})
   }
+
+  handleSeconds = () => {
+      this.setState({time: this.state.time - 1})
+  }
+
+
 
   timer = () => {
     if (this.state.time !== 0) {
-    return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
+    return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } handleSeconds = { this.handleSeconds } />
     } else {return ""}
   }
 
   modalContent = () => {
     let nextLevel = this.state.level + 1
-
+    if (this.state.time < 2) {
      return <div>
+       <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+       <br/>
+       <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
+       <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+        Continue
+       </button>
+
+       <div className = "oneStar"/>
+       <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+    </div>
+  } else if (this.state.time > 2 && this.state.time < 10) {
+    return <div>
+      <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+      <br/>
+      <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
+      <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+       Continue
+      </button>
+
+      <div className = "twoStars"/>
+      <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+   </div>
+ } else {
+   return <div>
      <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
      <br/>
      <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
      <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
       Continue
-    </button>
-    </div>
+     </button>
+
+     <div className = "threeStars"/>
+     <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+  </div>
+ }
 
   }
 
@@ -135,20 +172,22 @@ export class ButtonBomb extends Component {
 
 //----- loss condition - ADD TIMER CONDITION HERE!!!!!
     if (matches.includes(false) || this.state.noTime) {
-
+        this.lose()
         return (
           <div>
 
             <img className = "explosion background" />
-            {this.lose()}
+
           </div>
         )
 
 //----- win condition
     } else if (matches.length === solution.length && matches.length !== 0) {
-
+      this.win()
       return (
-        <div>{this.win()}</div>
+          <Popup defaultOpen = {true} position = "top center" modal closeOnDocumentClick = {false} >
+                  {this.modalContent()}
+          </Popup>
       )
 
 //----- gives us our generic game board
@@ -158,7 +197,7 @@ export class ButtonBomb extends Component {
         <div className = "buttonGameBG background">
 
           <div className = "gameStyle" >
-
+            {console.log(this.state.time)}
             <div className = "bombContainer" >
 
               <div className = "timer" >

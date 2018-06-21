@@ -20,6 +20,7 @@ import explosionSound from '../assets/sounds/explosionSound.mp3'
 import Beep2 from '../assets/sounds/Beep2.mp3'
 import error from '../assets/sounds/error.mp3'
 import almost from '../assets/sounds/almost.mp3'
+import victory from '../assets/sounds/victory.mp3'
 
 export class WireBomb extends Component {
   constructor() {
@@ -29,7 +30,6 @@ export class WireBomb extends Component {
       buttonsPressed: [],
       solution: [],
       level: 0,
-      emoji: "",
       instructions: "",
       time: 0,
       noTime: false,
@@ -38,6 +38,7 @@ export class WireBomb extends Component {
       wire3: false,
       wire4: false,
       wire5: false,
+      win: null
     }
     //add sound files here
     this.explosionSound = new Audio(explosionSound)
@@ -46,7 +47,7 @@ export class WireBomb extends Component {
     this.almost = new Audio(almost)
     this.snip = new Audio(snip)
     this.backgroundCountdown = new Audio(tickingClock)
-
+    this.victory = new Audio(victory)
   }
 
 //----- sets initial state with solution + wrong buttons also fetches current player info and sets props
@@ -57,7 +58,6 @@ export class WireBomb extends Component {
       this.setState({
         solution: this.props.solution,
         level: this.props.level,
-        emoji: this.props.emoji,
         instructions: this.props.instructions,
         time: this.props.timeLeft,
       });
@@ -118,15 +118,15 @@ export class WireBomb extends Component {
 
   //----- passes the current exploded + defused info to the exploded function in player action + modal victory screen
     win = () => {
-      this.backgroundCountdown.pause()
-      this.backgroundCountdown.currentTime = 0
-      let increaseDefusedCounter = this.props.player.defused + 1
-      let explodedCounter = this.props.player.exploded
-      let nextLevel = this.state.level + 1
-      defused(increaseDefusedCounter, explodedCounter)
-      return <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick = {false} >
-              {this.modalContent()}
-            </Popup>
+      if (!this.state.win) {
+        this.victory.play()
+        this.backgroundCountdown.pause()
+        this.backgroundCountdown.currentTime = 0
+        let increaseDefusedCounter = this.props.player.defused + 1
+        let explodedCounter = this.props.player.exploded
+        let nextLevel = this.state.level + 1
+        defused(increaseDefusedCounter, explodedCounter)
+      }
     }
 
   //----- passes the current exploded + defused info to the exploded function in player action
@@ -146,24 +146,60 @@ export class WireBomb extends Component {
       })
     }
 
+    handleSeconds = () => {
+        this.setState({time: this.state.time - 1})
+    }
+
     timer = () => {
       if (this.state.time !== 0) {
-      return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } />
+      return <Timer time = { this.state.time } handleTimeOut = { this.handleTimeOut } handleSeconds = { this.handleSeconds } />
       } else {return ""}
     }
 
     modalContent = () => {
       let nextLevel = this.state.level + 1
-
+      if (this.state.time < 2) {
        return <div>
+         <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+         <br/>
+         <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
+         <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+          Continue
+         </button>
+
+         <div className = "oneStar"/>
+         <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+      </div>
+    } else if (this.state.time > 2 && this.state.time < 10) {
+      return <div>
+        <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
+        <br/>
+        <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
+        <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
+         Continue
+        </button>
+
+        <div className = "twoStars"/>
+        <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+     </div>
+   } else {
+     return <div>
        <h1 className = "lvlComplete" > LEVEL {this.state.level}</h1>
        <br/>
        <h1 className = "lvlComplete2" >COMPLETED! </h1>
+
        <button className = "closeModalButton" onClick = { () => { this.props.history.push(`/level${nextLevel}`) } } >
         Continue
-      </button>
-      </div>
-    }
+       </button>
+
+       <div className = "threeStars"/>
+       <h1 className = "modalTimeRemaining" > Time Remaining: <br/> {this.state.time} Seconds </h1>
+    </div>
+   }
+
+  }
 
   render() {
 //----- handles combination attempts + maps over buttons pressed array & checks if any comparisons are false
@@ -174,20 +210,22 @@ export class WireBomb extends Component {
 
 //----- loss condition - ADD TIMER CONDITION HERE!!!!!
     if (matches.includes(false) || this.state.noTime) {
-
+        this.lose()
         return (
           <div>
 
             <img className = "explosion background" />
-            {this.lose()}
+
           </div>
         )
 
 //----- win condition
     } else if (matches.length === solution.length && matches.length !== 0) {
-
+      this.win()
       return (
-        <div>{this.win()}</div>
+      <Popup defaultOpen = {true} position = "center" modal closeOnDocumentClick = {false} >
+        {this.modalContent()}
+      </Popup>
       )
 
 //----- gives us our generic game board
@@ -217,11 +255,8 @@ export class WireBomb extends Component {
                   <button onClick = {this.wirePress3} value="3" className = { this.state.wire3 ? 'wireButton3C' : 'wireButton3' } />
                   <button onClick = {this.wirePress4} value="4" className = { this.state.wire4 ? 'wireButton4C' : 'wireButton4' } />
                   <button onClick = {this.wirePress5} value="5" className = { this.state.wire5 ? 'wireButton5C' : 'wireButton5' } />
-
                 </div>
-
             </div>
-
         </div>
       </div>
       )

@@ -11,6 +11,7 @@ export default class Timer extends Component {
   }
 
   componentDidMount() {
+    this.startTimer();
 
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({
@@ -18,6 +19,12 @@ export default class Timer extends Component {
       seconds: this.props.time
     });
 
+  }
+
+  componentWillUnmount(){
+    if(this.timer) {
+      clearInterval(this.timer);
+    }
   }
 
   secondsToTime(secs){
@@ -41,20 +48,24 @@ export default class Timer extends Component {
   countDown = () => {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
+
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
-    });
+    })
+
+    this.props.handleSeconds()
 
     // Check if we're at zero.
     if (seconds === 0) {
       this.props.handleTimeOut();
       clearInterval(this.timer);
     }
+
   }
 
 
-  startTimer = () => {
+  startTimer = (pause) => {
     if (this.timer === 0) {
      this.timer = setInterval(this.countDown, 1000);
    }
@@ -63,7 +74,6 @@ export default class Timer extends Component {
   render() {
     return (
       <div>
-        {this.startTimer()}
         {this.state.time.m}:{this.state.time.s}
       </div>
     )
