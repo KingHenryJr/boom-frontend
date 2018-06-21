@@ -2,10 +2,11 @@ BOOOOOOM - Created by Henry Zhang + Arthur Luyre
 
 Artwork Credits:
 
-Nina Geometrieva
-Mani Bharathi Ravi
-Seth Eckert
-Tidjane Tall
+Nina Geometrieva,
+Mani Bharathi Ravi,
+Seth Eckert,
+Tidjane Tall,
+Tomas Brunsdon
 
 
 To start playing start Rails (rails s) on the backend
